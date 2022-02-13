@@ -1,5 +1,9 @@
 <%- include('partials/header.ejs')-%>
 <h1>Home</h1>
 <br>
-<p><%= lorem %></p>
+ <% for (x in contents){ %>
+   <h1><%= contents[x].title %></h1>
+   <p><%= contents[x].body%></p>
+<% } %>
+
 <%- include ('partials/footer.ejs')-%>

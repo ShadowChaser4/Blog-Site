@@ -13,27 +13,33 @@ app.listen(3000, ()=>{
   console.log('The server is listening in the port 3000')
 });
 
-const contentslist =[];
-const first = " is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a gal"
+const content = [
+  {
+  title:'First',
+  body: " is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a gal"
+  },
+  {
+    title: "Second",
+    body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  }
+];
+
 
 // for index page
 app.get('/', (req, res)=>{
-  res.render('index',{lorem: first} )
+  res.render('index',{contents: content} )
+
 })
 
-// for home page
-app.get('/home', (req, res)=>{
-  res.render('home',{lorem: first})
-})
 
 // for contact page
 app.get('/contact', (req, res)=>{
-  res.render('contact',{lorem: first})
+  res.render('contact',{lorem: content[0].body})
 })
 
 //for about page
 app.get('/about', (req, res)=>{
-  res.render('about',{lorem: first})
+  res.render('about',{lorem: content[0].body})
 })
 
 //for compose
@@ -43,7 +49,13 @@ app.get('/compose', (req, res)=>{
 
 //post into compose
 app.post('/compose', (req, res)=>{
-  contentslist.push(req.body.ComposedString);
-  console.log(contentslist)
+  const post = {
+    title: (req.body.Title),
+    body: (req.body.ComposedString)
+  }
+  content.push(post);
+  for (let i = 0; i < content.length; i++){
+    console.log(content[i].title);
+  }
   res.redirect('/compose')
 })
