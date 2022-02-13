@@ -54,8 +54,9 @@ app.post('/compose', (req, res)=>{
     body: (req.body.ComposedString)
   }
   content.push(post);
-  for (let i = 0; i < content.length; i++){
-    console.log(content[i].title);
-  }
+  content.forEach((cont) => {
+    console.log(cont.title)
+  });
+
   res.redirect('/compose')
 })
