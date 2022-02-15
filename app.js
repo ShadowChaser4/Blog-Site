@@ -58,5 +58,5 @@ app.post('/compose', (req, res)=>{
     console.log(cont.title)
   });
 
-  res.redirect('/compose')
+  res.redirect('/')
 })
