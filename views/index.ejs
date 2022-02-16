@@ -1,8 +1,16 @@
 <%- include('partials/header.ejs')-%>
 <h1>Home</h1>
 <br>
+
+<% for (x in start){ %>
+  <h1><%= start[x].title %></h1>
+  <p><%= start[x].body%></p>
+<% } %>
+
+
+
  <% for (x in contents){ %>
-   <h1><%= contents[x].title %></h1>
+  <a href="/post/<%=contents[x].title%>" target="_blank"><h1><%= contents[x].title %></h1></a> 
    <p><%= contents[x].body%></p>
 <% } %>
 
