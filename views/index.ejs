@@ -2,16 +2,20 @@
 <h1>Home</h1>
 <br>
 
-<% for (x in start){ %>
-  <h1><%= start[x].title %></h1>
-  <p><%= start[x].body%></p>
-<% } %>
-
-
-
  <% for (x in contents){ %>
-  <a href="/post/<%=contents[x].title%>" ><h1><%= contents[x].title %></h1></a> 
-   <p><%= contents[x].body%></p>
+  <a href="/post/<%=contents[x].title%>" ><h1><%= contents[x].title %></h1></a>
+
+  <%  if (contents[x].length  >=80)%>
+<%    {%>
+        <p><%= contents[x].body.substring(0,80)%><a href="/post/<%=contents[x].title%>">...</a></p>
+  <%  }  %>
+
+  <%  if (contents[x].length < 80){%>
+      <p><%= contents[x].body%> <p>
+  <%  }%>
 <% } %>
+
+
+goto /compse to compose
 
 <%- include ('partials/footer.ejs')-%>
