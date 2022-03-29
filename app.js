@@ -14,8 +14,8 @@ mongoose.connect("mongodb+srv://kushal_48:Test-123@cluster0.mnlpq.mongodb.net/bl
 
 
 // setting up the server
-app.listen(3000, ()=>{
-  console.log('The server is listening in the port 3000')
+app.listen(process.env.PORT || 3000, ()=>{
+  console.log('Th)e server is listening in the port 3000')
 });
 
 const start= [
